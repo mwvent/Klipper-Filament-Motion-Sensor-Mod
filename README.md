@@ -17,7 +17,7 @@ Rests the stats for query\
 **SET_FILAMENT_MOTION_DETECT_LENGTH SENSOR=YOUR_SENSOR_NAME VALUE=NEW_LENGTH**\
 Temporarily overrides the motion detect length in the printer config. This value is not saved to the config but provides a way of testing new values mid print without restarting Klipper.\
 \
-The following data will also be availible via the Klipper API\
+The following data will also be availible via the Klipper API
 - **filament_detected**, same as vanilla
 - **enabled**, same as vanilla
 - **last_encoder_event_extruder_position**, The E position at the time of the last Filament Motion Encoder event
