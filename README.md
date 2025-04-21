@@ -2,19 +2,19 @@ A modified Filament Motion Sensor module for Klipper 3D Printers. The vanilla mo
 \
 Adds the follwing new commands\
 \
-**QUERY_FILAMENT_MOTION SENSOR=<your sensor name>**\
+**QUERY_FILAMENT_MOTION SENSOR=YOUR_SENSOR_NAME**\
 Returns a few stats on filament distance between encoder events, also if a runout event happens it will return the stats for that helping find the right value for your config.\
 Stats that **may** be returned depending on what has been recorded since last stat reset are\
-*No Data: If no events have yet been recorded
+-**No Data**: If no events have yet been recorded
 -**LAST_ENCODER_EVENT_DISTANCE**:  The difference between the E position at the time of the last Filament Motion Encoder event and the position before that\
 -**MAX_DISTANCE**: The maximum value seen of LAST_ENCODER_EVENT_DISTANCE since the last stats or Klipper reset\
 -**LAST_RUNOUT_ACTUAL_POSITION**: The position of the extuder when the last Filament Runout Detection happened\
 -**LAST_RUNOUT_MAX_PERMITTED_POSITION**: Filament Runout is determined by the extruder position reaching a higher value than this one without the filament motion encoder responding, the difference between this and last_runout_event_extruder_position can inform what detection distance is needed if things were in fact operating fine\
 \
-**RESET_FILAMENT_MOTION_STATS SENSOR=<your sensor name>**\
+**RESET_FILAMENT_MOTION_STATS SENSOR=YOUR_SENSOR_NAME**\
 Rests the stats for query\
 \
-**SET_FILAMENT_MOTION_DETECT_LENGTH SENSOR=<your sensor name> VALUE=<new length>**\
+**SET_FILAMENT_MOTION_DETECT_LENGTH SENSOR=YOUR_SENSOR_NAME VALUE=NEW_LENGTH**\
 Temporarily overrides the motion detect length in the printer config. This value is not saved to the config but provides a way of testing new values mid print without restarting Klipper.\
 \
 The following data will also be availible via the Klipper API\
