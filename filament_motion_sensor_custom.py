@@ -1,7 +1,6 @@
 # Filament Motion Sensor Module
 #
 # Copyright (C) 2021 Joshua Wherrett <thejoshw.code@gmail.com>
-# Copyright (C) 2025 Matthew Watts <https://github.com/mwvent>
 #
 # This file may be distributed under the terms of the GNU GPLv3 license.
 import logging
@@ -132,6 +131,7 @@ class EncoderSensorCustom:
             self.mstats["overall"]["lastrunout_logged"] = True
             self.mstats["last_runout_event"]["extruder_position"] = extruder_pos
             self.mstats["last_runout_event"]["max_permitted_extruder_position"] = self.filament_runout_pos
+            self.mstats["last_runout_event"]["recorded"] = True
         # Pass values to helper
         if not self.olderVersionHelper :
             self.runout_helper.note_filament_present(eventtime, filamentPresent)
@@ -144,6 +144,8 @@ class EncoderSensorCustom:
             eventtime = self.reactor.monotonic()
         extruder_pos = self._get_extruder_pos(eventtime)
         prevPos = self.mstats["last_encoder_event"]["extruder_position"]
+        if not self.mstats["last_encoder_event"]["recorded"] :
+            prevPos = extruder_pos
         dist = extruder_pos - prevPos
         prevMaxDist = self.mstats["overall"]["max_distance"]
         self.mstats["last_encoder_event"]["extruder_position"] = extruder_pos
